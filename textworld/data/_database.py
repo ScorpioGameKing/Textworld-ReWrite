@@ -14,19 +14,54 @@ class Database():
         self._database_name = database_name
         
     def connect(self):
+        """
+        Use this to establish a connection to the Database
+        """
         self._database_connection = sqlite3.connect(f"{self._database_location}{self._database_name}")
         self._database_cursor = self._database_connection.cursor()
 
     def intialize_database(self, *initalization_queries):
+        """
+        Use this to supply a Database with the intialization and additonal
+        queries as needed.
+        """
         for q in initalization_queries:
             self._database_cursor.execute(q, ())
             self._database_connection.commit()
+    
+    def fetch_tile(self, query, param=None):
+        """
+        Use this to fetch a tile from the current Database. The parameter changes
+        based on the Query being used
+
+        # SELECT_WITH_COLOR_BY_TILE
+        fetch_tile(Tiles.SELECT_WITH_COLOR_BY_TILE, str)
+        For this query the parameter must be a single character string
+
+        # SELECT_WITH_COLOR_BY_NOISE
+        fetch_tile(Tiles.SELECT_WITH_COLOR_BY_NOISE, (max_noise, min_noise))
+        For this query the parameter must be a tuple of floats with the max noise
+        value first and the min value second
+        """
+
+        match param:
+            # Matching for SELECT_WITH_COLOR_BY_TILE
+            case str():
+                self._database_cursor.execute(query, param)
+                self._database_connection.commit()
+            # Matching for SELECT_WITH_COLOR_BY_NOISE
+            case tuple():
+                self._database_cursor.execute(query, param)
+                self._database_connection.commit()
+            # Fall through, will be ripped later most likely
+            case _:
+                print(param)
+                self._database_cursor.execute(query, ())
+                self._database_connection.commit()
+        return self._database_cursor.fetchone()
 
     def __enter__(self):
         return self
 
     def __exit__(self, *misc):
         pass
-
-    def __str__(self):
-        return f"Database Object: {self._database_name} Located at: {self._database_location}"

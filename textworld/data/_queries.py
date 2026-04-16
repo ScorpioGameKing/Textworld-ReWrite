@@ -32,11 +32,11 @@ class Tile:
     """
     
     SELECT_WITH_COLORS_BY_TILE = """
-    SELECT tiles.tile, colors.bbstring FROM tiles JOIN colors USING (cid) WHERE tile = ?
+    SELECT tiles.tile, tiles.name, colors.bbstring FROM tiles JOIN colors USING (cid) WHERE tile = ?
     """
     
     SELECT_WITH_COLORS_BY_NOISE = """
-    SELECT tiles.tile, colors.bbstring FROM tiles JOIN colors USING (cid) WHERE min_noise <= ? AND max_noise > ? AND tile != 'X'
+    SELECT tiles.tile, tiles.name, colors.bbstring FROM tiles JOIN colors USING (cid) WHERE min_noise <= ? AND max_noise > ? AND tile != 'X'
     """
 
     SELECT_ALL = """

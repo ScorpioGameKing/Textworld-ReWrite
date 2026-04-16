@@ -11,7 +11,6 @@ class Generator():
     def __init__(self, noise_seed:int = int(strftime("%Y%m%d%H%M%S", gmtime()))):
         self._noise_seed = noise_seed
         self._noise_generator = OpenSimplex(self._noise_seed)
-        print(self._noise_seed)
 
     def generate_chunk(self, database, size, coords):
         scale = (0.5 * 0.0625)
@@ -29,7 +28,6 @@ class Generator():
                     noise_value = noise_field[x][y]
                     row.append(db.fetch_tile(Tile.SELECT_WITH_COLORS_BY_NOISE, (noise_value, noise_value))[0])
                 chunk.append(row)
-        print(chunk)
     
     def __enter__(self):
         return self

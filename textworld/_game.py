@@ -11,7 +11,7 @@ class TextworldGame():
         self.core_file_validation()
 
         with Generator(1) as gen:
-            gen.generate_chunk(self.data_manager.fetch_database("textworld"), (100, 100), (0, 0))
+            gen.generate_chunk(self.data_manager.fetch_database("textworld"), (500, 500), (0, 0))
     
     def core_file_validation(self):
         if not Path("data/core/textworld").exists(): 

@@ -1,6 +1,7 @@
 from pathlib import Path
-from textworld.data import DataManager, Database, Tile, World, Color
+from textworld.data import DataManager, Database, TileQuery, WorldQuery, ColorQuery
 from textworld.generation import Generator
+from textworld.models import Size, Coords
 
 class TextworldGame():
 
@@ -11,8 +12,9 @@ class TextworldGame():
         self.core_file_validation()
 
         with Generator(1) as gen:
-            gen.generate_chunk(self.data_manager.fetch_database("textworld"), (500, 500), (0, 0))
+            gen.generate_chunk(self.data_manager.fetch_database("textworld"), Size(500, 500), Coords(0, 0))
     
+    # TODO Move to DataManager
     def core_file_validation(self):
         if not Path("data/core/textworld").exists(): 
             self.data_manager.database_intialization(["data/core/", "textworld"])

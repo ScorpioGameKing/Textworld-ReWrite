@@ -1,4 +1,4 @@
-class Tile:
+class TileQuery:
     
     INIT = """
     CREATE TABLE IF NOT EXISTS tiles (
@@ -43,7 +43,7 @@ class Tile:
     SELECT tiles.tile, tiles.name, tiles.min_noise, tiles.max_noise, colors.bbstring FROM tiles JOIN colors USING (cid)
     """
     
-class World:
+class WorldQuery:
     
     INIT = """
     CREATE TABLE IF NOT EXISTS worlds (
@@ -72,7 +72,7 @@ class World:
     DELETE FROM worlds WHERE save_name = ?
     """
 
-class Color:
+class ColorQuery:
 
     INIT = """
     CREATE TABLE IF NOT EXISTS colors (

@@ -61,6 +61,7 @@ class Database():
         return self._database_cursor.fetchone()
 
     def __enter__(self):
+        self.connect()
         return self
 
     def __exit__(self, *misc):

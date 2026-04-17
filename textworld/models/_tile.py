@@ -2,6 +2,10 @@ from dataclasses import dataclass
 
 @dataclass
 class Tile:
+    """
+    The dataclass model used to represent Tiles within Textworld
+    """
+
     tile_char:str
     name:str
     color:str

@@ -2,6 +2,10 @@ import sqlite3
 
 class Database():
 
+    """
+    An interfacing class for working with sqlite databases.
+    """
+
     _database_connection: sqlite3.Connection = None
     _database_cursor: sqlite3.Cursor = None
     _database_location: str

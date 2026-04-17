@@ -2,6 +2,10 @@ from dataclasses import dataclass
 
 @dataclass
 class Coords:
+    """
+    The dataclass model used to represent positions within Textworld
+    """
+
     x: int
     y: int
     

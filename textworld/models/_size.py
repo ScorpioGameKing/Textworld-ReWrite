@@ -5,6 +5,10 @@ T = TypeVar('T', int, float)
 
 @dataclass
 class Size(Generic[T]):
+    """
+    The dataclass model used to represent sizes within Textworld
+    """
+
     height: T
     width: T
     def to_tuple(self):

@@ -23,9 +23,9 @@ class DataManager():
         -> Any number of iterables in the order of [path, name]. These will
         be iterated through to ensure file paths exist and databases are created 
         """
-        for db in databases:
-            self.__create_missing_directory_tree(db[0])
-            self.__databases.update({db[1]:Database(db[1], db[0])})
+        for database in databases:
+            self.__create_missing_directory_tree(database[0])
+            self[database[1]] = Database(database[1], database[0])
 
     def __add_database_to_manager(self, database):
         """
@@ -35,8 +35,7 @@ class DataManager():
         -> A single iterable in the order of [path, name] to add and existing
         database to the manager
         """
-        self.__databases.update({database[1]: Database(database[1], database[0])})
-    
+        self[database[1]] = Database(database[1], database[0])
 
     def __create_missing_directory_tree(self, location):
         """
@@ -58,12 +57,17 @@ class DataManager():
                 db.intialize_database(TileQuery.INIT, ColorQuery.INIT, WorldQuery.INIT, TileQuery.FILL, ColorQuery.FILL)
         else: 
             self.__add_database_to_manager(["data/core/", "textworld"])
-
-    def fetch_database(self, database_name):
-        """
-        Used to request a database from the manager for use
-
-        database_name
-        -> The name of the database to fetch from the manager
-        """
-        return self.__databases[database_name]
+    
+    def __getitem__(self, database_name:str):
+        try:
+            return self.__databases[database_name]
+        except KeyError:
+            return None
+        except TypeError:
+            return None
+    
+    def __setitem__(self, location:str, database:Database):
+        try:
+            self.__databases.update({location: database})
+        except TypeError as e:
+            print(f"The provided location or database are invalid types: {e}")

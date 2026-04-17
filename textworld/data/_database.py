@@ -1,4 +1,5 @@
 import sqlite3
+from textworld.models import Tile
 
 class Database():
 
@@ -57,12 +58,8 @@ class Database():
             case tuple():
                 self._database_cursor.execute(query, param)
                 self._database_connection.commit()
-            # Fall through, will be ripped later most likely
-            case _:
-                print(param)
-                self._database_cursor.execute(query, ())
-                self._database_connection.commit()
-        return self._database_cursor.fetchone()
+        tile_data = self._database_cursor.fetchone()
+        return Tile(tile_data[0], tile_data[1], tile_data[2])
 
     def __enter__(self):
         self.connect()

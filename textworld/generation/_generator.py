@@ -3,6 +3,7 @@ from opensimplex import OpenSimplex
 from time import gmtime, strftime
 from textworld.data import TileQuery
 from textworld.models import Size, Coords, Tile
+from textworld.generation._map import TextworldMap
 
 class Generator():
     """
@@ -34,7 +35,7 @@ class Generator():
         """
 
         scale = (0.5 * 0.0625)
-        chunk = []
+        chunk = TextworldMap(size)
 
         _w = np.array([((x + (coords.x * size.width)) * scale) for x in range(size.width)])
         _h = np.array([((y + (coords.y * size.height)) * scale) for y in range(size.height)])
@@ -48,9 +49,9 @@ class Generator():
                     noise_value = noise_field[x][y]
                     # TODO Look at porting the tile fetching and creation into the 
                     # database and return the tile dataclass instead
-                    tile_data = db.fetch_tile(TileQuery.SELECT_WITH_COLORS_BY_NOISE, (noise_value, noise_value))
-                    row.append(Tile(tile_data[0], tile_data[1], tile_data[2]))
-                chunk.append(row)
+                    tile = db.fetch_tile(TileQuery.SELECT_WITH_COLORS_BY_NOISE, (noise_value, noise_value))
+                    chunk[x, y] = tile
+        return chunk
     
     def __enter__(self):
         return self

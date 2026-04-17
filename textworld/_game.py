@@ -9,5 +9,9 @@ class TextworldGame():
     def __init__(self):
         self.data_manager = DataManager()
 
+        chunk = None
+
         with Generator(1) as gen:
-            gen.generate_chunk(self.data_manager.fetch_database("textworld"), Size(50, 50), Coords(0, 0))
+            chunk = gen.generate_chunk(self.data_manager["textworld"], Size(50, 50), Coords(0, 0))
+
+        print(chunk[2,2])

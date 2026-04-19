@@ -1,5 +1,5 @@
 from textworld.data import DataManager
-from textworld.generation import Generator
+from textworld.generation import Generator, TextworldWorld
 from textworld.models import Size, Coords
 
 class TextworldGame():
@@ -9,9 +9,6 @@ class TextworldGame():
     def __init__(self):
         self.data_manager = DataManager()
 
-        chunk = None
-
-        with Generator(1) as gen:
-            chunk = gen.generate_chunk(self.data_manager["textworld"], Size(50, 50), Coords(0, 0))
-
-        print(chunk[2,2])
+        world = TextworldWorld(Size(5, 5), Size(50, 50), 1)
+        world.generate_world(self.data_manager["textworld"])
+        world.dump_chunk(Coords(0, 0))

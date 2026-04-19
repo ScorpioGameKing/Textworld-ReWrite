@@ -2,16 +2,16 @@ from textworld.models import Size, Coords, Tile
 import numpy as np
 
 class TextworldMap():
-    __columns: int
-    __rows: int
+    columns: int
+    rows: int
     __tiles: dict[Coords, Tile]
     __noise: np.typing.NDArray
 
     def __init__(self, chunk_size: Size[int]):
-        self.__columns = chunk_size.width
-        self.__rows = chunk_size.height
+        self.columns = chunk_size.width
+        self.rows = chunk_size.height
         self.__tiles = {}
-        self.__noise = np.zeros(shape=(self.__rows, self.__columns))
+        self.__noise = np.zeros(shape=(self.rows, self.columns))
 
     def __getitem__(self, __slice: tuple[int, int] | slice):
         if getattr(__slice, 'start', None):

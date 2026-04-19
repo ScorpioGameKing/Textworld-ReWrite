@@ -1,5 +1,5 @@
 from textworld.data import DataManager
-from textworld.generation import Generator, TextworldWorld
+from textworld.generation import TextworldWorld
 from textworld.models import Size, Coords
 
 class TextworldGame():

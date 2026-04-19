@@ -1,8 +1,7 @@
-from time import gmtime, strftime, sleep
-from typing import Callable
+from time import gmtime, strftime
 from textworld.models import Coords, Size, Tile
 from textworld.generation._generator import Generator
-import pickle, gzip, threading, math, os
+import pickle, gzip, threading, os
 import numpy as np
 
 class TextworldWorld():

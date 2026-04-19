@@ -1,6 +1,5 @@
 import numpy as np
 from opensimplex import OpenSimplex
-from time import gmtime, strftime
 from textworld.data import TileQuery
 from textworld.models import Size, Coords, Tile
 from textworld.generation._map import TextworldMap
@@ -16,7 +15,7 @@ class Generator():
 
     _noise_generator: OpenSimplex
 
-    def __init__(self, noise_seed:int = int(strftime("%Y%m%d%H%M%S", gmtime()))):
+    def __init__(self, noise_seed:int):
 
         self._noise_generator = OpenSimplex(noise_seed)
 

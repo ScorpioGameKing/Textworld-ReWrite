@@ -53,7 +53,7 @@ class DataManager():
         """
         if not Path("data/core/textworld").exists(): 
             self.__database_intialization(["data/core/", "textworld"])
-            with self.fetch_database("textworld") as db:
+            with self["textworld"] as db:
                 db.intialize_database(TileQuery.INIT, ColorQuery.INIT, WorldQuery.INIT, TileQuery.FILL, ColorQuery.FILL)
         else: 
             self.__add_database_to_manager(["data/core/", "textworld"])

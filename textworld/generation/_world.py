@@ -7,13 +7,13 @@ import numpy as np
 
 class TextworldWorld():
     __chunks: dict[Coords, np.array] = {}
-    __chunk_count: Size[int]
+    chunk_count: Size[int]
     __chunk_size: Size[int]
     __seed: int
     __entity_positions: dict[Coords, str] = {}
 
     def __init__(self, chunk_count: Size[int], chunk_size: Size[int], seed:int = int(strftime("%Y%m%d%H%M%S", gmtime()))):
-        self.__chunk_count = chunk_count
+        self.chunk_count = chunk_count
         self.__chunk_size = chunk_size
         self.__seed = seed
         self.lock = threading.Lock()
@@ -25,8 +25,8 @@ class TextworldWorld():
     
     def __generate_multiple_chunks(self, database: Database):
         with Generator(self.__seed) as generator:
-            for y in range(0, self.__chunk_count.height):
-                for x in range(0, self.__chunk_count.width):
+            for y in range(0, self.chunk_count.height):
+                for x in range(0, self.chunk_count.width):
                     self.__generate_chunk(database, Coords(x, y), generator)
 
     def generate_world(self, database: Database):
@@ -35,7 +35,7 @@ class TextworldWorld():
 
     def dump_chunk(self, coords: tuple[int, int]):
         try:
-            path = f'./dumps/chunk_{coords.x}_{coords.y}.txt'
+            path = f'dumps/chunk_{coords.x}_{coords.y}.txt'
             os.makedirs(os.path.dirname(path), exist_ok=True)
             with open(path, "w") as _d:
                 chunk = self[coords.x, coords.y]
@@ -45,7 +45,6 @@ class TextworldWorld():
                     _d.write("\n")
         except Exception as e:
             print(f"Failed to dump chunk {coords} with error {e}")
-            
 
     def save_world(self):
         data = pickle.dumps(self, protocol=pickle.HIGHEST_PROTOCOL)
@@ -62,10 +61,10 @@ class TextworldWorld():
     
     def __getstate__(self):
         self.lock = None
-        return (self.chunk_count, self.chunk_size, self.__chunks)
+        return (self.chunk_count, self.__chunk_size, self.__chunks)
     
     def __setstate__(self, state):
-        (self.chunk_count, self.chunk_size, self.__chunks) = state
+        (self.chunk_count, self.__chunk_size, self.__chunks) = state
         self.lock = threading.Lock()
             
     def __repr__(self) -> str:

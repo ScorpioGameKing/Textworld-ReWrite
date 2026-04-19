@@ -9,6 +9,8 @@ class TextworldGame():
     def __init__(self):
         self.data_manager = DataManager()
 
-        world = TextworldWorld(Size(5, 5), Size(50, 50), 1)
+        world = TextworldWorld(Size(1, 1), Size(500, 500), 1)
         world.generate_world(self.data_manager["textworld"])
-        world.dump_chunk(Coords(0, 0))
+        for y in range(0, world.chunk_count.height):
+                for x in range(0, world.chunk_count.width):
+                    world.dump_chunk(Coords(x, y))

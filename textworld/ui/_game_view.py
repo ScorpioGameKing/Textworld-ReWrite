@@ -11,4 +11,36 @@ class GameView():
         pass
 
     def render(self):
-        pr.draw_text_ex(self._window._fonts['blocked'], "gggggdddfffffffffffffdddgggggggggggssssssssssssssssssssssgggggggggggggggggggggggggssssssssssssssssss", [2, 2], 12, 2, pr.WHITE)
+        # TODO Pass string data from loaded chunks
+        pr.draw_text_ex(
+            self._window.fonts['blocked'],
+             """gggggdddfffffffffffffdddgggggggggggssssssssssssssssssssssgggggggggggggggggggggggggsss
+ggggggddffffffffffffffddggggggggggggssssssssssssssssssssssgggggggggggggggggggggggssss
+ggggggdddfffffffffffffdddggggggggggggssssssssssssssssssssssggggggggggggggggggggggssss
+gggggggdddffffffffffffdddgggggggggggggsssssssssssssssssssssgggggggggggggggggggggsssss
+gggggggdddfffffffffffffdddgggggggggggggsssssssssssssssssssssgggggggggggggggggggssssss
+ggggggggdddffffffffffffdddgggggggggggggggsssssssssssssssssssgggggggggggggggggggssssss
+gggggggggdddfffffffffffddddggggggggggggggggsssssssssssssssssggggggggggggggggggsssssss
+ggggggggggdddffffffffffddddggggggggggggggggggsssssssssssssssggggggggggggggggggsssssss
+gggggggggggddddffffffffdddddgggggggggggggggggggsssssssssssssggggggggggggggggggsssssss
+ggggggggggggddddddffffddddddgggggggggggggggggggggggsssssssgggggggggggggggggggssssssss
+ggggggggggggggdddddddddddddddgggggggggggggggggggggggggggggggggggggggggggggggggsssssss
+gggggggggggggggdddddddddddddddggggggggggggggggggggggggggggggggggggggggggggggggsssssss
+sgggggggggggggggggdddddddddddddgggggggggggggggggggggggggggggggggggggggggggggggsssssss
+ssggggggggggggggggggdddddddddddddggggggggggggggggggggggggggggggggggggggggggggggssssss
+ssgggggggggggggggggggggdddddddddddddggggggggggggggggggggggggggggggggggggggggggggsssss
+sssggggggggggggggggggggggdddddddddddddddggggggggggggggggggggggggggggggggggggggggggsss
+ssssggggggggggggggggggggggdddddddddddddddddggggggggggggggggggggggggggggggggggggggggss
+ssssssgggggggggggggggggggggddddddddddddddddddgggggggggggggggggggggggggggggggggggggggg
+sssssssgggggggggggggggggggggddddddffffffffddddddggggggggggggggggggggggggggggggggggggg
+sssssssssggggggggggggggggggggddddffffffffffffdddddggggggggggggggggggggggggggggggggggg
+ssssssssssssgggggggggggggggggddddffffffffffffffddddddgggggggggggggggggggggggggggggggg
+ssssssssssssssggggggggggggggggdddfffffffffffffffffddddddggggggggggggggggggggggggggggg
+ssssssssssssssssggggggggggggggdddfffffffffffffffffffdddddddgggggggggggggggggggggggggg
+sssssssssssssssssggggggggggggggdddffffffmmmmmmfffffffffdddddddddggggggggggggggggggggg
+sssssssssssssssssssggggggggggggdddfffffmmmmmmmmmmfffffffffdddddddddddddddgggggggggggg
+                """,
+              [2, 2],
+              self._window.fonts['blocked'].baseSize,
+              2, 
+              self._window.colors['fg'])

@@ -7,6 +7,7 @@ import pyray as pr
 
 class TextworldWindow():
 
+    game: TextworldGame
     dimensions: Size
     title: str
     fonts: Fonts
@@ -15,7 +16,8 @@ class TextworldWindow():
     _render_pool: dict
     _update_pool: dict
 
-    def __init__(self, dimensions:Size, title:str):
+    def __init__(self, game, dimensions:Size, title:str):
+        self.game = game
         self.dimensions = dimensions
         self.title = title
         self._update_pool = {}

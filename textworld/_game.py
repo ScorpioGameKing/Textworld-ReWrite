@@ -1,7 +1,7 @@
 from textworld.data import DataManager
 from textworld.generation import TextworldWorld
 from textworld.models import Size, Coords
-from textworld.ui import TextworldWindow
+from textworld.ui import TextworldWindow, GameView
 
 class TextworldGame():
 
@@ -20,4 +20,5 @@ class TextworldGame():
                     world.dump_chunk(Coords(x, y))
         '''
 
+        self.window.add_to_render_pool("game_view", GameView())
         self.window.create_window()

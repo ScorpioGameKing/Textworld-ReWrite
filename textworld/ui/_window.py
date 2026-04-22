@@ -40,9 +40,10 @@ class TextworldWindow():
 
     def _render_loop(self):
         pr.begin_drawing()
+        pr.clear_background(pr.BLACK)
         for obj in self._render_pool:
             try: 
-                obj.render()
+                self._render_pool[obj].render()
             except:
                 pass
         pr.end_drawing()

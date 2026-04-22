@@ -20,5 +20,6 @@ class TextworldGame():
                     world.dump_chunk(Coords(x, y))
         '''
 
-        self.window.add_to_render_pool("game_view", GameView())
         self.window.create_window()
+        self.window.add_to_render_pool("game_view", GameView(self.window))
+        self.window.run()

@@ -27,6 +27,8 @@ class TextworldWindow():
 
     def create_window(self):
         self._window = pr.init_window(self.dimensions.width, self.dimensions.height, self.title)
+        pr.set_target_fps(60)
+        pr.set_window_monitor(0)
         self.fonts.load_fonts()
     
     def run(self):
@@ -36,7 +38,7 @@ class TextworldWindow():
         self._render_pool.update({key: value})
     
     def add_to_update_pool(self, key, value):
-        self._update_pool.update({key, value})
+        self._update_pool.update({key: value})
     
     def remove_from_render_pool(self, key):
         self._render_pool.pop(key)

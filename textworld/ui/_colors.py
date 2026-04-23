@@ -1,7 +1,7 @@
 class Colors():
     _themes: dict = {}
     _theme: dict = {}
-    _default_theme: str = 'gruvbox-dark'
+    _default_theme: str = 'gruvbox-light'
 
     def __init__(self):
         self._build_themes()
@@ -28,7 +28,7 @@ class Colors():
                 'brown' :(131, 115, 93,  255)
             },
             'gruvbox-light':{
-                'bg'    :(251, 241, 199,  255),
+                'bg'    :(213, 196, 161,  255),
                 'fg'    :(60,  56,  54, 255),
                 'red'   :(204, 36,  29,  255),
                 'green' :(152, 151, 26,  255),

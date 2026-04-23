@@ -44,10 +44,14 @@ class TextworldWindow():
             case "gruvbox-dark":
                 self.colors.set_theme("ocean-dark")
             case "ocean-dark":
+                self.colors.set_theme("railcast-dark")
+            case "railcast-dark":
                 self.colors.set_theme("gruvbox-light")
             case "gruvbox-light":
                 self.colors.set_theme("ocean-light")
             case "ocean-light":
+                self.colors.set_theme("railcast-light")
+            case "railcast-light":
                 self.colors.set_theme("gruvbox-dark")
     
     def run(self):

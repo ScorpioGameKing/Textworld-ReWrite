@@ -2,7 +2,6 @@ import pyray as pr
 
 class KeyboardManager():
 
-    _queue_count: int = 6
     _key_map: dict = {
         'A'     : pr.KEY_A            , 'APS'  : pr.KEY_APOSTROPHE     ,  'B'    : pr.KEY_B             , 'BAC' : pr.KEY_BACK          , 'BSL' : pr.KEY_BACKSLASH    ,
         'BSK'   : pr.KEY_BACKSPACE    , 'C'    : pr.KEY_C              ,  'CAP'  : pr.KEY_CAPS_LOCK     , 'CMA' : pr.KEY_COMMA         , 'D'   : pr.KEY_D            , 'DEL' : pr.KEY_DELETE      ,

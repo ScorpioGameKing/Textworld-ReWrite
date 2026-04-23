@@ -5,11 +5,13 @@ class Fonts():
 
     _fonts: dict = {}
     _font: pr.Font
+    font_name: str = ""
     _default_font: str = "blocked"
     _font_location: str = "textworld/ui/resources/fonts/"
     
     def set_font(self, font_name):
         self._font = self._fonts[font_name]
+        self.font_name = font_name
     
     def get_font(self):
         return self._font

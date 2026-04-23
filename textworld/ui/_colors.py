@@ -1,7 +1,8 @@
 class Colors():
     _themes: dict = {}
     _theme: dict = {}
-    _default_theme: str = 'gruvbox-light'
+    theme_name: str = ""
+    _default_theme: str = 'gruvbox-dark'
 
     def __init__(self):
         self._build_themes()
@@ -9,6 +10,7 @@ class Colors():
 
     def set_theme(self, theme_name):
         self._theme = self._themes[theme_name]
+        self.theme_name = theme_name
     
     def _build_themes(self):
         # Gruvbox Dark

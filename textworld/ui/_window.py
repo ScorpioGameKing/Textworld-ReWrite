@@ -31,6 +31,20 @@ class TextworldWindow():
         pr.set_window_monitor(0)
         self.fonts.load_fonts()
     
+    def toggle_font(self):
+        print(self.fonts.font_name)
+        if self.fonts.font_name == "monocraft":
+            self.fonts.set_font("blocked")
+        elif self.fonts.font_name == "blocked":
+            self.fonts.set_font("monocraft")
+    
+    def toggle_theme(self):
+        print(self.colors.theme_name)
+        if self.colors.theme_name == "gruvbox-dark":
+            self.colors.set_theme("gruvbox-light")
+        elif self.colors.theme_name == "gruvbox-light":
+            self.colors.set_theme("gruvbox-dark")
+    
     def run(self):
         self._main_loop()
     

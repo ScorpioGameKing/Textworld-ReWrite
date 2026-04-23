@@ -19,7 +19,8 @@ class GameView():
     def update_font(self):
         print(self._window.fonts.font_name)
         self._font_data = self._window.fonts.get_font()
-        self._zoom = self._font_data['font'].baseSize
+        if self._zoom > self._font_data['max_size']: self._zoom = self._font_data['max_size']
+        if self._zoom < self._font_data['min_size']: self._zoom = self._font_data['min_size']
 
     def update(self):
         if self._zoom + self._zoom_dir <= self._font_data['max_size'] and self._zoom + self._zoom_dir >= self._font_data['min_size']:

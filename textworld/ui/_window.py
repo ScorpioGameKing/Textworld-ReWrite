@@ -40,10 +40,15 @@ class TextworldWindow():
     
     def toggle_theme(self):
         print(self.colors.theme_name)
-        if self.colors.theme_name == "gruvbox-dark":
-            self.colors.set_theme("gruvbox-light")
-        elif self.colors.theme_name == "gruvbox-light":
-            self.colors.set_theme("gruvbox-dark")
+        match self.colors.theme_name:
+            case "gruvbox-dark":
+                self.colors.set_theme("ocean-dark")
+            case "ocean-dark":
+                self.colors.set_theme("gruvbox-light")
+            case "gruvbox-light":
+                self.colors.set_theme("ocean-light")
+            case "ocean-light":
+                self.colors.set_theme("gruvbox-dark")
     
     def run(self):
         self._main_loop()

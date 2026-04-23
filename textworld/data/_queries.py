@@ -13,34 +13,34 @@ class TileQuery:
     FILL = """
         INSERT INTO tiles (tile, name, min_noise, max_noise, cid) VALUES 
 
-        ("~", "Water", -1.0, -0.5, 'Deep Blue'),
-        ("s", "Sand", -0.5, -0.25, 'Light Yellow'),
-        ("g", "Grass", -0.25, 0.25, 'Mid Green'),
-        ("d", "Dirt", 0.25, 0.35, 'Brown'),
-        ("f", "Forest", 0.35, 0.5, 'Dark Green'),
-        ("m", "Mountain", 0.5, 0.75, 'Light Gray'),
-        ("w", "Snow", 0.75, 1, 'White'),
-        ('X', 'Background', NULL, NULL, 'Purple'),
-        ('p', 'Path', NULL, NULL, 'Black') ON CONFLICT(tile) 
+        ("~", "Water", -1.0, -0.5, 'blue'),
+        ("s", "Sand", -0.5, -0.25, 'yellow'),
+        ("g", "Grass", -0.25, 0.25, 'green'),
+        ("d", "Dirt", 0.25, 0.35, 'brown'),
+        ("f", "Forest", 0.35, 0.5, 'aqua'),
+        ("m", "Mountain", 0.5, 0.75, 'gray'),
+        ("w", "Snow", 0.75, 1, 'white'),
+        ('X', 'Background', NULL, NULL, 'bg'),
+        ('p', 'Path', NULL, NULL, 'fg') ON CONFLICT(tile) 
         DO UPDATE SET 
         min_noise = excluded.min_noise,
         max_noise = excluded.max_noise
     """
     
     SELECT_WITH_COLORS = """
-    SELECT tiles.tile, colors.bbstring, tiles.min_noise, tiles.max_noise FROM tiles JOIN colors USING (cid)
+    SELECT tiles.tile, tiles.cid, tiles.min_noise, tiles.max_noise FROM tiles
     """
     
     SELECT_WITH_COLORS_BY_TILE = """
-    SELECT tiles.tile, tiles.name, colors.bbstring FROM tiles JOIN colors USING (cid) WHERE tile = ?
+    SELECT tiles.tile, tiles.name, tiles.cid FROM tiles WHERE tile = ?
     """
     
     SELECT_WITH_COLORS_BY_NOISE = """
-    SELECT tiles.tile, tiles.name, colors.bbstring FROM tiles JOIN colors USING (cid) WHERE min_noise <= ? AND max_noise > ? AND tile != 'X'
+    SELECT tiles.tile, tiles.name, tiles.cid FROM tiles WHERE min_noise <= ? AND max_noise > ? AND tile != 'X'
     """
 
     SELECT_ALL = """
-    SELECT tiles.tile, tiles.name, tiles.min_noise, tiles.max_noise, colors.bbstring FROM tiles JOIN colors USING (cid)
+    SELECT tiles.tile, tiles.name, tiles.min_noise, tiles.max_noise, tiles.cid FROM tiles
     """
     
 class WorldQuery:

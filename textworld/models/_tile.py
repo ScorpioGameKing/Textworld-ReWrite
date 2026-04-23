@@ -13,6 +13,9 @@ class Tile:
     def get_tile(self):
         return self.tile_char
     
+    def get_color(self):
+        return self.color
+    
     def __getstate__(self):
         return (self.tile_char, self.color, self.name)
     

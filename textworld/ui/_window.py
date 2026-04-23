@@ -34,8 +34,24 @@ class TextworldWindow():
     def toggle_font(self):
         print(self.fonts.font_name)
         if self.fonts.font_name == "monocraft":
-            self.fonts.set_font("blocked")
-        elif self.fonts.font_name == "blocked":
+            self.fonts.set_font("blocks")
+        elif self.fonts.font_name == "blocks":
+            self.fonts.set_font("stencilie")
+        elif self.fonts.font_name == "stencilie":
+            self.fonts.set_font("happykiller")
+        elif self.fonts.font_name == "happykiller":
+            self.fonts.set_font("blockface")
+        elif self.fonts.font_name == "blockface":
+            self.fonts.set_font("blockface-bold")
+        elif self.fonts.font_name == "blockface-bold":
+            self.fonts.set_font("origa")
+        elif self.fonts.font_name == "origa":
+            self.fonts.set_font("origap")
+        elif self.fonts.font_name == "origap":
+            self.fonts.set_font("uglyhandwriting")
+        elif self.fonts.font_name == "uglyhandwriting":
+            self.fonts.set_font("pecita")
+        elif self.fonts.font_name == "pecita":
             self.fonts.set_font("monocraft")
     
     def toggle_theme(self):

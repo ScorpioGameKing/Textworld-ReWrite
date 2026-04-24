@@ -30,7 +30,7 @@ class TextworldGame():
         self.keyboard_manager = KeyboardManager()
 
         self.player_manager = PlayerManager()
-        self.player_manager.create_player(71, 17, 1, 1)
+        self.player_manager.create_player(120, 180, 1, 1)
 
         self.game_view = GameView(self.window)
         

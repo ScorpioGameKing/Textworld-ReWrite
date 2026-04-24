@@ -1,7 +1,6 @@
 class GameManager():
 
     game: TextworldGame
-    _move_table:list = [False, False, False, False]
 
     def __init__(self, game):
         self._game = game
@@ -17,20 +16,17 @@ class GameManager():
             self._game.window.toggle_theme()
         
         if self._game.keyboard_manager.get_key("W"):
-            self._move_table[0] = True
+            self._game.player_manager.active_player.up()
         
         if self._game.keyboard_manager.get_key("S"):
-            self._move_table[1] = True
+            self._game.player_manager.active_player.down()
         
         if self._game.keyboard_manager.get_key("A"):
-            self._move_table[2] = True
+            self._game.player_manager.active_player.left()
         
         if self._game.keyboard_manager.get_key("D"):
-            self._move_table[3] = True
+            self._game.player_manager.active_player.right()
 
-        print(self._move_table)
-        self._game.player_manager.active_player.update_positon(self._move_table[0], self._move_table[1], self._move_table[2], self._move_table[3])
-        self._move_table = [False, False, False, False]
         print(self._game.player_manager.active_player.get_position())
 
         #print(self._game.player_manager.active_player.get_position())

@@ -11,19 +11,20 @@ class BaseEntity():
         self.x = x
         self.y = y
     
-    def update_positon(self, up, down, left, right):
-        self._move_table = {'up':up,'down':down,"left":left,"right":right}
-        print(self._move_table)
-    
     def get_position(self):
         return (self.x, self.y)
+
+    def up(self):
+        self.y -= 1
+
+    def down(self):
+        self.y += 1
+
+    def left(self):
+        self.x -= 1
+
+    def right(self):
+        self.x += 1
     
     def update(self):
-        if self._move_table['up']:
-            self.y -= 1
-        if self._move_table['down']:
-            self.y += 1
-        if self._move_table['left']:
-            self.x -= 1
-        if self._move_table['right']:
-            self.x += 1
+        pass

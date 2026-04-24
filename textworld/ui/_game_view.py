@@ -56,13 +56,26 @@ class GameView():
                         1, 
                         self._window.colors["red"])
                 else:
-                    _tile = self._window.game.active_world[self._chunk_x,self._chunk_y][x,y]
-                    pr.draw_text_ex(
+                    if x < 0: x = 0
+                    if y < 0: y= 0
+                    if x >= self._window.game.active_world.chunk_size.width: x = 0
+                    if y >= self._window.game.active_world.chunk_size.height: y = 0
+                    if x == 0  or y == 0:
+                        pr.draw_text_ex(
                         self._font_data['font'],
-                        _tile.get_tile(),
+                        "X",
                         [_x, _y],
                         self._zoom,
                         1, 
-                        self._window.colors[_tile.get_color()])
+                        self._window.colors['purple'])
+                    else:
+                        _tile = self._window.game.active_world[self._chunk_x,self._chunk_y][x,y]
+                        pr.draw_text_ex(
+                            self._font_data['font'],
+                            _tile.get_tile(),
+                            [_x, _y],
+                            self._zoom,
+                            1, 
+                            self._window.colors[_tile.get_color()])
                 _draw_x += 1
             _draw_y += 1

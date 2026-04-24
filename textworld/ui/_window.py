@@ -70,6 +70,8 @@ class TextworldWindow():
             case "railcast-light":
                 self.colors.set_theme("swayr")
             case "swayr":
+                self.colors.set_theme("shic")
+            case "shic":
                 self.colors.set_theme("gruvbox-dark")
     
     def run(self):

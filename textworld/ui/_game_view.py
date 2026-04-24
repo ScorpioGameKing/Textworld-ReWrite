@@ -26,7 +26,7 @@ class GameView():
         self._player_y = position[1]
         self._chunk_x = position[2]
         self._chunk_y = position[3]
-        print(f"PX: {self._player_x} PY: {self._player_y}, CX: {self._chunk_x} CY: {self._chunk_y}")
+        #print(f"PX: {self._player_x} PY: {self._player_y}, CX: {self._chunk_x} CY: {self._chunk_y}")
     
     def update_font(self):
         print(self._window.fonts.font_name)

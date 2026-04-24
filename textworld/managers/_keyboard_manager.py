@@ -24,8 +24,11 @@ class KeyboardManager():
         'Y'     : pr.KEY_Y            , 'Z'    : pr.KEY_Z              ,  '0'    : pr.KEY_ZERO           
     }
 
-    def get_key(self, key_char):
+    def get_pressed_key(self, key_char):
         return pr.is_key_pressed(self._key_map[key_char])
+    
+    def get_held_key(self, key_char):
+        return pr.is_key_down(self._key_map[key_char])
 
     def update(self):
         pass

@@ -17,16 +17,22 @@ class TextworldWorld():
         self.__seed = seed
         self.lock = threading.Lock()
 
-    def __generate_chunk(self, database: Database, coords: Coords, generator: Generator):
+    def generate_chunk(self, database: Database, coords: Coords, generator: Generator):
         chunk = generator.generate_chunk(database, self.chunk_size, coords)
         with self.lock:
+            self.__chunks[coords] = chunk
+
+    def generate_live_chunk(self, database: Database, coords: Coords):
+        print(f"Live Chunk at: {coords}")
+        with Generator(self.__seed) as generator:
+            chunk = generator.generate_chunk(database, self.chunk_size, coords)
             self.__chunks[coords] = chunk
     
     def __generate_multiple_chunks(self, database: Database):
         with Generator(self.__seed) as generator:
             for y in range(0, self.chunk_count.height):
                 for x in range(0, self.chunk_count.width):
-                    self.__generate_chunk(database, Coords(x, y), generator)
+                    self.generate_chunk(database, Coords(x, y), generator)
 
     def generate_world(self, database: Database):
         thread = threading.Thread(target=self.__generate_multiple_chunks(database))

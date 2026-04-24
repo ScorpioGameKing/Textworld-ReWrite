@@ -19,10 +19,11 @@ class TextworldGame():
         self.data_manager = DataManager()
         self.active_world = TextworldWorld(Size(3, 3), Size(200, 200), 1)
         self.active_world.generate_world(self.data_manager["textworld"])
+        """
         for y in range(0, self.active_world.chunk_count.height):
                 for x in range(0, self.active_world.chunk_count.width):
                     self.active_world.dump_chunk(Coords(x, y))
-
+        """
         self.window = TextworldWindow(self, Size(640,1280), "Textworld")
         self.window.create_window()
         

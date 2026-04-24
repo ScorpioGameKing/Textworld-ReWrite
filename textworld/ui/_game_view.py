@@ -8,13 +8,25 @@ class GameView():
     _font_data: dict = {}
     _zoom: int = 0
     _zoom_dir: int = 0
+    
+    _player_x: int = 71#71
+    _player_y: int = 17#17
+    _chunk_x: int = 1
+    _chunk_y: int = 1
 
     def __init__(self, window):
         self._window = window
         self.update_font()
 
-    def get_zoom_dir(self, _zoom_dir):
-        self._zoom_dir = _zoom_dir
+    def get_zoom_dir(self, zoom_dir):
+        self._zoom_dir = zoom_dir
+    
+    def get_player_position(self, position):
+        self._player_x = position[0]
+        self._player_y = position[1]
+        self._chunk_x = position[2]
+        self._chunk_y = position[3]
+        print(f"PX: {self._player_x} PY: {self._player_y}, CX: {self._chunk_x} CY: {self._chunk_y}")
     
     def update_font(self):
         print(self._window.fonts.font_name)
@@ -27,15 +39,30 @@ class GameView():
             self._zoom += self._zoom_dir
 
     def render(self):
-        for y in range(0, math.trunc(self._window.dimensions.height / self._zoom)):
-            for x in range(0, math.trunc(self._window.dimensions.width / pr.measure_text_ex(self._font_data['font'], "x", self._zoom, 0).x)):
-                _tile = self._window.game.active_world[0,0][x,y]
-                _x = self._font_data['x_in'] + x * pr.measure_text_ex(self._font_data['font'], "x", self._zoom, 0).x
-                _y = self._font_data['y_in'] + y * self._zoom
-                pr.draw_text_ex(
-                    self._font_data['font'],
-                    _tile.get_tile(),
-                    [_x, _y],
-                    self._zoom,
-                    1, 
-                    self._window.colors[_tile.get_color()])
+        _height = math.trunc(self._window.dimensions.height / self._zoom)
+        _width = math.trunc(self._window.dimensions.width / pr.measure_text_ex(self._font_data['font'], "x", self._zoom, 0).x)
+        _draw_y = 1
+        for y in range(math.trunc(self._player_y - (_height * 0.5)), math.trunc(self._player_y + (_height * 0.5))):
+            _draw_x = 1
+            for x in range(math.trunc(self._player_x - (_width * 0.5)), math.trunc(self._player_x + (_width * 0.5))):
+                _x = self._font_data['x_in'] + (_draw_x * pr.measure_text_ex(self._font_data['font'], "x", self._zoom, 0).x)
+                _y = self._font_data['y_in'] + (_draw_y * self._zoom)
+                if x == self._player_x and y == self._player_y:
+                    pr.draw_text_ex(
+                        self._font_data['font'],
+                        "P",
+                        [_x, _y],
+                        self._zoom,
+                        1, 
+                        self._window.colors["red"])
+                else:
+                    _tile = self._window.game.active_world[self._chunk_x,self._chunk_y][x,y]
+                    pr.draw_text_ex(
+                        self._font_data['font'],
+                        _tile.get_tile(),
+                        [_x, _y],
+                        self._zoom,
+                        1, 
+                        self._window.colors[_tile.get_color()])
+                _draw_x += 1
+            _draw_y += 1

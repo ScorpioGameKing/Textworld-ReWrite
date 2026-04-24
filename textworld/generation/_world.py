@@ -7,18 +7,18 @@ import numpy as np
 class TextworldWorld():
     __chunks: dict[Coords, np.array] = {}
     chunk_count: Size[int]
-    __chunk_size: Size[int]
+    chunk_size: Size[int]
     __seed: int
     __entity_positions: dict[Coords, str] = {}
 
     def __init__(self, chunk_count: Size[int], chunk_size: Size[int], seed:int = int(strftime("%Y%m%d%H%M%S", gmtime()))):
         self.chunk_count = chunk_count
-        self.__chunk_size = chunk_size
+        self.chunk_size = chunk_size
         self.__seed = seed
         self.lock = threading.Lock()
 
     def __generate_chunk(self, database: Database, coords: Coords, generator: Generator):
-        chunk = generator.generate_chunk(database, self.__chunk_size, coords)
+        chunk = generator.generate_chunk(database, self.chunk_size, coords)
         with self.lock:
             self.__chunks[coords] = chunk
     
@@ -60,10 +60,10 @@ class TextworldWorld():
     
     def __getstate__(self):
         self.lock = None
-        return (self.chunk_count, self.__chunk_size, self.__chunks)
+        return (self.chunk_count, self.chunk_size, self.__chunks)
     
     def __setstate__(self, state):
-        (self.chunk_count, self.__chunk_size, self.__chunks) = state
+        (self.chunk_count, self.chunk_size, self.__chunks) = state
         self.lock = threading.Lock()
             
     def __repr__(self) -> str:

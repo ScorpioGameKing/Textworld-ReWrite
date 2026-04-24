@@ -41,7 +41,7 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 8,
+                                    'min_size': 18,
                                     'max_size': 30
                                     }
                                     })
@@ -51,7 +51,7 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 10,
+                                    'min_size': 18,
                                     'max_size': 30
                                     }
                                     })
@@ -61,7 +61,7 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 16,
+                                    'min_size': 18,
                                     'max_size': 36
                                     }
                                     })
@@ -71,7 +71,7 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 16,
+                                    'min_size': 18,
                                     'max_size': 40
                                     }
                                     })
@@ -81,7 +81,7 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 16,
+                                    'min_size': 18,
                                     'max_size': 40
                                     }
                                     })
@@ -91,7 +91,7 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 12,
+                                    'min_size': 18,
                                     'max_size': 40
                                     }
                                     })
@@ -101,7 +101,7 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 12,
+                                    'min_size': 18,
                                     'max_size': 40
                                     }
                                     })
@@ -111,7 +111,7 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 16,
+                                    'min_size': 18,
                                     'max_size': 40
                                     }
                                     })

@@ -1,0 +1,1 @@
+from textworld.entities.base._base import BaseEntity

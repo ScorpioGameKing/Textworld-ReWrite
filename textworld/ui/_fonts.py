@@ -18,7 +18,6 @@ class Fonts():
         return self._font
 
     def load_fonts(self):
-        print(listdir(self._font_location))
         for font_dir in listdir(self._font_location):
             for font in listdir(f"{self._font_location}{font_dir}"):
                 _font_split = font.split('.')

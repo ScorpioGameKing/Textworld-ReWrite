@@ -21,12 +21,6 @@ class TextworldWorld():
         chunk = generator.generate_chunk(database, self.chunk_size, coords)
         with self.lock:
             self.__chunks[coords] = chunk
-
-    def generate_live_chunk(self, database: Database, coords: Coords):
-        print(f"Live Chunk at: {coords}")
-        with Generator(self.__seed) as generator:
-            chunk = generator.generate_chunk(database, self.chunk_size, coords)
-            self.__chunks[coords] = chunk
     
     def __generate_multiple_chunks(self, database: Database):
         with Generator(self.__seed) as generator:

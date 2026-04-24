@@ -26,10 +26,8 @@ class GameView():
         self._player_y = position[1]
         self._chunk_x = position[2]
         self._chunk_y = position[3]
-        #print(f"PX: {self._player_x} PY: {self._player_y}, CX: {self._chunk_x} CY: {self._chunk_y}")
     
     def update_font(self):
-        print(self._window.fonts.font_name)
         self._font_data = self._window.fonts.get_font()
         if self._zoom > self._font_data['max_size']: self._zoom = self._font_data['max_size']
         if self._zoom < self._font_data['min_size']: self._zoom = self._font_data['min_size']

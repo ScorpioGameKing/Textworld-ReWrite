@@ -12,6 +12,9 @@ class MenuManager():
 
     def add_menu(self, key, menu):
         self.menus.update({key:menu})
+    
+    def get_active(self):
+        return self.menus[self.active]
 
     def update(self):
         for menu in self.menus:

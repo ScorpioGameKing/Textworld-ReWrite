@@ -15,5 +15,6 @@ class GameMenu():
             self.components[component].render()
 
     def update(self): 
+        self.components['left_panel'].update_colors(self._window.colors)
         for component in self.components:
             self.components[component].update()

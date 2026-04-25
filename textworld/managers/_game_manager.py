@@ -20,6 +20,7 @@ class GameManager():
 
         _pressed_f = self._game.keyboard_manager.get_pressed_key("F")
         _pressed_t = self._game.keyboard_manager.get_pressed_key("T")
+        _pressed_u = self._game.keyboard_manager.get_pressed_key("U")
         
         # Holding Key
         _hold_w = self._game.keyboard_manager.get_held_key("W")
@@ -35,6 +36,10 @@ class GameManager():
         # Theme Cycle
         if _pressed_t:
             self._game.window.toggle_theme()
+        
+        # Debug UI Toggle
+        if _pressed_u:
+            self._game.menu_manager.get_active().components['left_panel'].toggle_slide()
         
         # Move Player Up
         if not _hold_left_shift and _hold_w:
@@ -68,5 +73,8 @@ class GameManager():
         if _hold_left_shift and _pressed_d:
             self._game.player_manager.active_player.chunk_right()
 
+        # Update UI Colors
+        #self._game.menu_manager.get_active().components['left_panel'].up
+        
         # Update the Game View's target position
         self._game.game_view.get_player_position(self._game.player_manager.active_player.get_position())

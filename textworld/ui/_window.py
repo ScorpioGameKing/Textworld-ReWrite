@@ -1,6 +1,5 @@
 from textworld.models import Size
-from textworld.ui._colors import Colors
-from textworld.ui._fonts import Fonts
+from textworld.ui.theme import Colors, Fonts
 import ntpath
 import os
 import pyray as pr

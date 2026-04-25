@@ -1,0 +1,1 @@
+from textworld.ui.menus.components._base_panel import BasePanel

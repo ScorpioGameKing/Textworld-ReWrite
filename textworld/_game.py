@@ -2,7 +2,7 @@ from textworld.data import DataManager
 from textworld.generation import TextworldWorld
 from textworld.models import Size, Coords
 from textworld.ui import TextworldWindow, GameView
-from textworld.managers import MouseManager, KeyboardManager, GameManager, PlayerManager
+from textworld.managers import MouseManager, KeyboardManager, GameManager, PlayerManager, MenuManager
 
 class TextworldGame():
 
@@ -13,6 +13,7 @@ class TextworldGame():
     mouse_manager: MouseManager
     keyboard_manager: KeyboardManager
     player_manager: PlayerManager
+    menu_manager: MenuManager
     game_manager: GameManager
 
     def __init__(self):
@@ -29,6 +30,7 @@ class TextworldGame():
         
         self.mouse_manager = MouseManager()
         self.keyboard_manager = KeyboardManager()
+        self.menu_manager = MenuManager()
 
         self.player_manager = PlayerManager()
         self.player_manager.create_player(120, 180, 1, 1)
@@ -42,7 +44,9 @@ class TextworldGame():
         self.window.add_to_update_pool("keyboard_manager", self.keyboard_manager)
         self.window.add_to_update_pool("player_manager", self.player_manager)
         self.window.add_to_update_pool("game_view", self.game_view)
+        self.window.add_to_update_pool("menu_manager", self.menu_manager)
         
         self.window.add_to_render_pool("game_view", self.game_view)
+        self.window.add_to_render_pool("menu_manager", self.menu_manager)
         
         self.window.run()

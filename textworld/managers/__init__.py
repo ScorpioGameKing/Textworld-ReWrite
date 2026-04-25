@@ -2,3 +2,4 @@ from textworld.managers._game_manager import GameManager
 from textworld.managers._mouse_manager import MouseManager
 from textworld.managers._keyboard_manager import KeyboardManager
 from textworld.managers._player_manager import PlayerManager
+from textworld.managers._menu_manager import MenuManager

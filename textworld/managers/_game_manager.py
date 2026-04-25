@@ -20,7 +20,11 @@ class GameManager():
 
         _pressed_f = self._game.keyboard_manager.get_pressed_key("F")
         _pressed_t = self._game.keyboard_manager.get_pressed_key("T")
+
         _pressed_u = self._game.keyboard_manager.get_pressed_key("U")
+        _pressed_h = self._game.keyboard_manager.get_pressed_key("H")
+        _pressed_j = self._game.keyboard_manager.get_pressed_key("J")
+        _pressed_k = self._game.keyboard_manager.get_pressed_key("K")
         
         # Holding Key
         _hold_w = self._game.keyboard_manager.get_held_key("W")
@@ -38,8 +42,23 @@ class GameManager():
             self._game.window.toggle_theme()
         
         # Debug UI Toggle
-        if _pressed_u:
+        if not _hold_left_shift and _pressed_u:
+            self._game.menu_manager.get_active().components['top_panel'].toggle_slide()
+        
+        if _pressed_h:
             self._game.menu_manager.get_active().components['left_panel'].toggle_slide()
+        
+        if _pressed_j:
+            self._game.menu_manager.get_active().components['bottom_panel'].toggle_slide()
+        
+        if _pressed_k:
+            self._game.menu_manager.get_active().components['right_panel'].toggle_slide()
+        
+        if _hold_left_shift and _pressed_u:
+            self._game.menu_manager.get_active().components['top_panel'].toggle_slide()
+            self._game.menu_manager.get_active().components['left_panel'].toggle_slide()
+            self._game.menu_manager.get_active().components['bottom_panel'].toggle_slide()
+            self._game.menu_manager.get_active().components['right_panel'].toggle_slide()
         
         # Move Player Up
         if not _hold_left_shift and _hold_w:

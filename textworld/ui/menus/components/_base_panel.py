@@ -45,13 +45,15 @@ class BasePanel():
                     if self.x > 0 - self.width:
                         self.x -= self.slide_speed
                 case 'right':
-                    if self.x < self.width + (self.width * 0.5):
+                    if self.x <  self.x + self.width:
                         self.x += self.slide_speed
                 case 'up':
                     if self.y > 0 - self.height:
                         self.y -= self.slide_speed
                 case 'down':
-                    if self.y < self.height + (self.height * 0,5):
+                    print(f"Down: {self.y} {self.height} {self. y + self.height}")
+                    print(self.y < self.y + self.height)
+                    if self.y < self.y + self.height:
                         self.y += self.slide_speed
         else:
             match self.slide_dir:

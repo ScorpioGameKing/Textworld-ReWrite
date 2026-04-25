@@ -49,9 +49,11 @@ class GameManager():
             self._game.menu_manager.get_active().components['left_panel'].toggle_slide()
         
         if _pressed_j:
+            print("Pressed J")
             self._game.menu_manager.get_active().components['bottom_panel'].toggle_slide()
         
         if _pressed_k:
+            print("Pressed K")
             self._game.menu_manager.get_active().components['right_panel'].toggle_slide()
         
         if _hold_left_shift and _pressed_u:

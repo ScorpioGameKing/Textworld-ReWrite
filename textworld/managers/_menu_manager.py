@@ -1,11 +1,14 @@
 from textworld.ui.menus import GameMenu
 
 class MenuManager():
+
+    _window: TextworldWindow
     menus: dict = {}
     active: str = "game-menu"
 
-    def __init__(self):
-        self.add_menu(self.active, GameMenu(20, 20, 200, 200))
+    def __init__(self, window):
+        self._window = window
+        self.add_menu(self.active, GameMenu(self._window))
 
     def add_menu(self, key, menu):
         self.menus.update({key:menu})

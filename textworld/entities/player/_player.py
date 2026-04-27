@@ -16,28 +16,24 @@ class Player(BaseEntity):
         return (self.x, self.y, self.chunk_x, self.chunk_y)
     
     def up(self):
-        print(self.get_position())
         super().up()
         if self.y <= 0:
             self.chunk_y -= 1
             self.y = self._chunk_size.height - 1
 
     def down(self):
-        print(self.get_position())
         super().down()
         if self.y >= self._chunk_size.height:
             self.chunk_y += 1
             self.y = 1
 
     def left(self):
-        print(self.get_position())
         super().left()
         if self.x <= 0:
             self.chunk_x -= 1
             self.x = self._chunk_size.width - 1
 
     def right(self):
-        print(self.get_position())
         super().right()
         if self.x >= self._chunk_size.width:
             self.chunk_x += 1

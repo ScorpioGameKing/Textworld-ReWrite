@@ -46,7 +46,6 @@ class GameView():
             for x in range(math.trunc(self._player_x - (_width * 0.5)), math.trunc(self._player_x + (_width * 0.5))):
                 _x = self._font_data['x_in'] + (_draw_x * pr.measure_text_ex(self._font_data['font'], "x", self._zoom, 0).x)
                 _y = self._font_data['y_in'] + (_draw_y * self._zoom)
-                print(x, y, _x, _y)
                 if x == self._player_x and y == self._player_y:
                     pr.draw_text_ex(
                         self._font_data['font'],
@@ -56,29 +55,11 @@ class GameView():
                         1, 
                         self._window.colors["red"])
                 else:
-                    if x < 0: 
-                        print(f"Left Stitch: {self._window.game.active_world[self._chunk_x - 1,self._chunk_y][x + self._window.game.active_world.chunk_size.width, y]}")
-                        _tile = self._window.game.active_world[self._chunk_x - 1,self._chunk_y][self._window.game.active_world.chunk_size.width + x,y]
-                        pr.draw_text_ex(
-                            self._font_data['font'],
-                            _tile.get_tile(),
-                            [_x, _y],
-                            self._zoom,
-                            1, 
-                            self._window.colors[_tile.get_color()])
-                    if y < 0: y = 0
-                    if x >= self._window.game.active_world.chunk_size.width: 
-                        print(f"Right Stitch: {self._window.game.active_world[self._chunk_x + 1,self._chunk_y][x - self._window.game.active_world.chunk_size.width, y]}")
-                        _tile = self._window.game.active_world[self._chunk_x + 1,self._chunk_y][x - self._window.game.active_world.chunk_size.width, y]
-                        pr.draw_text_ex(
-                            self._font_data['font'],
-                            _tile.get_tile(),
-                            [_x, _y],
-                            self._zoom,
-                            1, 
-                            self._window.colors[_tile.get_color()])
-                    if y >= self._window.game.active_world.chunk_size.height: y = 0
-                    if x == 0  or y == 0:
+                    if x < 0: x = -1
+                    if y < 0: y = -1
+                    if x >= self._window.game.active_world.chunk_size.width: x = -1
+                    if y >= self._window.game.active_world.chunk_size.height: y = -1
+                    if x == -1  or y == -1:
                         pr.draw_text_ex(
                         self._font_data['font'],
                         "X",

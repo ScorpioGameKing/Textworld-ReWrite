@@ -67,26 +67,31 @@ class GameManager():
                 
                 # Pause Menu UI Toggle
                 if _pressed_p:
-                    self._game.menu_manager.get_active().components['pause-screen'].top_panel.toggle_slide()
-                    self._game.menu_manager.get_active().components['pause-screen'].left_panel.toggle_slide()
-                    self._game.menu_manager.get_active().components['pause-screen'].bottom_panel.toggle_slide()
-                    self._game.menu_manager.get_active().components['pause-screen'].right_panel.toggle_slide()
+                    self._game.menu_manager.get_active().components['pause-screen'].toggle_visible()
                     self._paused = True
 
                 # Move Player Up
-                if not _hold_left_shift and _hold_w:
+                if _hold_left_shift and _hold_w:
                     self._game.player_manager.active_player.up()
-                
+                elif _press_w:
+                    self._game.player_manager.active_player.up()
+
                 # Move Player Down
-                if not _hold_left_shift and _hold_s:
+                if _hold_left_shift and _hold_s:
+                    self._game.player_manager.active_player.down()
+                elif _press_s:
                     self._game.player_manager.active_player.down()
                 
                 # Move Player Left
-                if not _hold_left_shift and _hold_a:
+                if _hold_left_shift and _hold_a:
+                    self._game.player_manager.active_player.left()
+                elif _press_a:
                     self._game.player_manager.active_player.left()
                 
                 # Move Player Right
-                if not _hold_left_shift and _hold_d:
+                if _hold_left_shift and _hold_d:
+                    self._game.player_manager.active_player.right()
+                elif _press_d:
                     self._game.player_manager.active_player.right()
                 
                 # Update the Game View's target position

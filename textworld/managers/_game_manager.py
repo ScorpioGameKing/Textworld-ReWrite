@@ -23,6 +23,12 @@ class GameManager():
         _pressed_f = self._game.keyboard_manager.get_pressed_key("F")
         _pressed_t = self._game.keyboard_manager.get_pressed_key("T")
         _pressed_p = self._game.keyboard_manager.get_pressed_key("P")
+
+        # Pressing Key
+        _press_w = self._game.keyboard_manager.get_pressed_key("W")
+        _press_a = self._game.keyboard_manager.get_pressed_key("A")
+        _press_s = self._game.keyboard_manager.get_pressed_key("S")
+        _press_d = self._game.keyboard_manager.get_pressed_key("D")
  
         # Holding Key
         _hold_w = self._game.keyboard_manager.get_held_key("W")

@@ -2,8 +2,6 @@ from textworld.models import Coords, Tile
 
 class BaseEntity():
 
-    _move_table:dict = {'up': False, 'down': False, "left": False, "right": False}
-
     x: int = 0
     y: int = 0
 

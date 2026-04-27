@@ -55,7 +55,7 @@ class GameView():
                         self._window.colors["red"])
                 else:
                     if x < 0: x = 0
-                    if y < 0: y= 0
+                    if y < 0: y = 0
                     if x >= self._window.game.active_world.chunk_size.width: x = 0
                     if y >= self._window.game.active_world.chunk_size.height: y = 0
                     if x == 0  or y == 0:

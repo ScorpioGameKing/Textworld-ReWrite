@@ -33,6 +33,7 @@ class TextworldGame():
         self.menu_manager = MenuManager(self.window)
 
         self.player_manager = PlayerManager()
+        self.player_manager.update_chunk_size(self.active_world.chunk_size)
         self.player_manager.create_player(120, 180, 1, 1)
 
         self.game_view = GameView(self.window)

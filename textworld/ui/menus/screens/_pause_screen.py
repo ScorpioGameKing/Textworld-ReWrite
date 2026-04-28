@@ -18,8 +18,9 @@ class PauseScreen():
         self._window = window
         self.left_panel = LeftSavePanel(self._window, Coords(20, 40), Size(590, 200), self._window.colors["fg"], self._window.colors["bg"])
         
-        self.right_panel = RightSavePanel(self._window, Coords(1060, 40), Size(590, 200), self._window.colors["fg"], self._window.colors["bg"], slide_dir='right')
-        
+        #self.right_panel = RightSavePanel(self._window, Coords(1060, 40), Size(590, 200), self._window.colors["fg"], self._window.colors["bg"], slide_dir='right')
+        self.right_panel = BasePanel(Coords(1060, 40), Size(590, 200), self._window.colors["fg"], self._window.colors["bg"], slide_dir='right')
+
         self.top_panel = BasePanel(Coords(240, 40), Size(370, 800), self._window.colors["fg"], self._window.colors["bg"], slide_dir='up', slide_speed=6)
         
         self.bottom_panel = BasePanel(Coords(240, 430), Size(200, 800), self._window.colors["fg"], self._window.colors["bg"], slide_dir='down')

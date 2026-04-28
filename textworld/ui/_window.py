@@ -51,6 +51,10 @@ class TextworldWindow():
         elif self.fonts.font_name == "uglyhandwriting":
             self.fonts.set_font("pecita")
         elif self.fonts.font_name == "pecita":
+            self.fonts.set_font("terminal-grotesque")
+        elif self.fonts.font_name == "terminal-grotesque":
+            self.fonts.set_font("terminal-grotesque_open")
+        elif self.fonts.font_name == "terminal-grotesque_open":
             self.fonts.set_font("monocraft")
     
     def toggle_theme(self):

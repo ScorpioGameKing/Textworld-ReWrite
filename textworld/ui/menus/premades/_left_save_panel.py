@@ -10,10 +10,10 @@ class LeftSavePanel(BasePanel):
         super().__init__(position, size, bg_color, fg_color, slide_dir, slide_speed)
         self._window = window
         self._layout = LayoutContainer(5, self._current_position, self._size, 0, 0)
-        self._layout.add_to_layout("player-name", UIText(self._window, Coords(2, 5), 18, "Player Name:"))
-        self._layout.add_to_layout("player-hp", UIText(self._window, Coords(2, 15), 18, "Cur./Max HP:"))
-        self._layout.add_to_layout("player-mp", UIText(self._window, Coords(2, 25), 18, "Cur./Max HP:"))
-        self._layout.add_to_layout("player-stamina", UIText(self._window, Coords(2, 35), 18, "Cur./Max SP:"))
+        self._layout.add_to_layout("player-name", UIText(self._window, Coords(6, 5), 18, "Player Name:"))
+        self._layout.add_to_layout("player-hp", UIText(self._window, Coords(6, 15), 18, "Cur./Max HP:"))
+        self._layout.add_to_layout("player-mp", UIText(self._window, Coords(6, 25), 18, "Cur./Max HP:"))
+        self._layout.add_to_layout("player-stamina", UIText(self._window, Coords(6, 35), 18, "Cur./Max SP:"))
 
     def update(self):
         super().update()

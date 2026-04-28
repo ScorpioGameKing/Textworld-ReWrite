@@ -7,8 +7,11 @@ class Fonts():
     _fonts: dict = {}
     _font: pr.Font
     font_name: str = ""
-    _default_font: str = "monocraft"
+    _default_font: str = "stencilie"
     _font_location: str = "textworld/ui/resources/fonts/"
+    _min_size: int =  14
+    _max_size: int = 50
+    _default_size: int = 20
     
     def set_font(self, font_name):
         self._font = self._fonts[font_name]
@@ -30,8 +33,9 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 24, None, 0),
                                     'x_in': 0,
                                     'y_in': 0,
-                                    'min_size': 18,
-                                    'max_size': 50
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                             case 'blocks':
@@ -40,8 +44,9 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 30
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                             case 'stencilie':
@@ -50,8 +55,9 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 30
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                             case 'happykiller':
@@ -60,8 +66,9 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 36
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                             case 'blockface':
@@ -70,8 +77,9 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 40
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                             case 'blockface-bold':
@@ -80,8 +88,9 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 40
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                             case 'origa':
@@ -90,8 +99,9 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 40
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                             case 'origap':
@@ -100,8 +110,9 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 40
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                             case 'uglyhandwriting':
@@ -110,8 +121,20 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 40
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
+                                    }
+                                    })
+                            case 'terminal-grotesque':
+                                self._fonts.update({
+                                    _font_split[0]:
+                                    {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
+                                    'x_in': 1,
+                                    'y_in': 1,
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
                     case 'otf':
@@ -122,8 +145,20 @@ class Fonts():
                                     {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
                                     'x_in': 1,
                                     'y_in': 1,
-                                    'min_size': 18,
-                                    'max_size': 40
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
+                                    }
+                                    })
+                            case 'terminal-grotesque_open':
+                                self._fonts.update({
+                                    _font_split[0]:
+                                    {'font':pr.load_font_ex(f"{self._font_location}{font_dir}//{font}", 20, None, 0),
+                                    'x_in': 1,
+                                    'y_in': 1,
+                                    'min_size': self._min_size,
+                                    'max_size': self._max_size,
+                                    'default_size':  self._default_size
                                     }
                                     })
         self.set_font(self._default_font)

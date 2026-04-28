@@ -19,9 +19,9 @@ class UIText():
         self._font_data = self._window.fonts.get_font()
     
     def update_position(self, x, y):
-        print(x, y)
+        #print(x, y)
         self._offset = Coords( self._position.x + x, self._position.y + y)
-        print(self._offset)
+        #print(self._offset)
     
     def update(self):
         pass

@@ -26,12 +26,14 @@ class GameView():
         self._player_y = position[1]
         self._chunk_x = position[2]
         self._chunk_y = position[3]
-        print(self._player_x, self._player_y, self._chunk_x, self._chunk_y)
+        #print(self._player_x, self._player_y, self._chunk_x, self._chunk_y)
     
     def update_font(self):
         self._font_data = self._window.fonts.get_font()
-        if self._zoom > self._font_data['max_size']: self._zoom = self._font_data['max_size']
-        if self._zoom < self._font_data['min_size']: self._zoom = self._font_data['min_size']
+        self._zoom = self._font_data['default_size']
+        #if self._zoom > self._font_data['max_size']: self._zoom = self._font_data['max_size']
+        #if self._zoom < self._font_data['min_size']: self._zoom = self._font_data['min_size']
+
 
     def update(self):
         if self._zoom + self._zoom_dir <= self._font_data['max_size'] and self._zoom + self._zoom_dir >= self._font_data['min_size']:

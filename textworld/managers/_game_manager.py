@@ -2,7 +2,7 @@ class GameManager():
 
     _game: TextworldGame
     _in_game: bool = True
-    _paused: bool = True
+    _paused: bool = False
 
     def __init__(self, game):
         self._game = game
@@ -109,16 +109,11 @@ class GameManager():
 
                 # Pause Menu UI Toggle
                 if _pressed_p:
-                    self._game.menu_manager.get_active().components['pause-screen'].top_panel.toggle_slide()
-                    self._game.menu_manager.get_active().components['pause-screen'].left_panel.toggle_slide()
-                    self._game.menu_manager.get_active().components['pause-screen'].bottom_panel.toggle_slide()
-                    self._game.menu_manager.get_active().components['pause-screen'].right_panel.toggle_slide()
+                    self._game.menu_manager.get_active().components['pause-screen'].toggle_visible()
                     self._paused = False
                 
                 if _press_w or _press_a:
-                    print(self._game.menu_manager.get_active().components['pause-screen'])
                     self._game.menu_manager.get_active().components['pause-screen'].top_panel.hover_up()
                 
                 if _press_s or _press_d:
-                    print(self._game.menu_manager.get_active().components['pause-screen'])
                     self._game.menu_manager.get_active().components['pause-screen'].top_panel.hover_down()

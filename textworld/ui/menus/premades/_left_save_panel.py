@@ -14,10 +14,10 @@ class LeftSavePanel(BasePanel):
         super().__init__(position, size, bg_color, fg_color, slide_dir, slide_speed)
         self._window = window
         self._header = UIText(self._window, Coords(20, 5), 24, "~CHARACTER~")
-        self._name = UIText(self._window, Coords(6, 30), 18, "Name:")
-        self._hp = UIText(self._window, Coords(6, 43), 18, "HP:")
-        self._mp = UIText(self._window, Coords(6, 56), 18, "HP:")
-        self._stamina = UIText(self._window, Coords(6, 69), 18, "SP:")
+        self._name = UIText(self._window, Coords(6, 30), 18, "Name: *REPLACE*")
+        self._hp = UIText(self._window, Coords(6, 43), 18, "HP: *REPLACE*")
+        self._mp = UIText(self._window, Coords(6, 56), 18, "HP: *REPLACE*")
+        self._stamina = UIText(self._window, Coords(6, 69), 18, "SP: *REPLACE*")
         
     def update_items(self):
         self._header.update_position(self._current_position.x, self._current_position.y)

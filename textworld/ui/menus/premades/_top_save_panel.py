@@ -1,15 +1,15 @@
-from textworld.ui.menus.components import BasePanel, UIText
+from textworld.ui.menus.components import BasePanel, UIText, UIButton
 from textworld.models import Coords, Size
 
 class TopSavePanel(BasePanel):
 
     _window: TextworldWindow
     _header: UIText
-    _continue: UIText
-    _save: UIText
-    _load: UIText
-    _options: UIText
-    _exit: UIText
+    _continue: UIButton
+    _save: UIButton
+    _load: UIButton
+    _options: UIButton
+    _exit: UIButton
     _cursor: UIText
     _hovered: str = 'continue'
 
@@ -18,11 +18,11 @@ class TopSavePanel(BasePanel):
         self._window = window
         self._header = UIText(self._window, Coords(300, 5), 32, "~PAUSE MENU~")
         self._cursor = UIText(self._window, Coords(320, 60), 22, "->")
-        self._continue = UIText(self._window, Coords(350, 60), 22, "Continue")
-        self._save = UIText(self._window, Coords(350, 100), 22, "Save Game")
-        self._load = UIText(self._window, Coords(350, 140), 22, "Load Game")
-        self._options = UIText(self._window, Coords(350, 180), 22, "Options")
-        self._exit = UIText(self._window, Coords(350, 220), 22, "Exit Game")
+        self._continue = UIButton(self._window, Coords(350, 60), Size(32, 110), "Continue")
+        self._save = UIButton(self._window, Coords(350, 100), Size(32, 110), "Save")
+        self._load = UIButton(self._window, Coords(350, 140), Size(32, 110), "Load")
+        self._options = UIButton(self._window, Coords(350, 180), Size(32, 110), "Options")
+        self._exit = UIButton(self._window, Coords(350, 220), Size(32, 110), "Exit")
     
     def hover_down(self):
         match self._hovered:

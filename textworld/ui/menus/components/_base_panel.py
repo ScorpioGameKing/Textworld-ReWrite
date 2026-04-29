@@ -5,7 +5,7 @@ class BasePanel():
     _size: Size
     _screen_position: Coords
     _current_position: Coords
-    visible: bool = True
+    visible: bool = False
     slide_dir: str = "left"
     slide_speed: int = 4
     panel: pr.draw_rectangle

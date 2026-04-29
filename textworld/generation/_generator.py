@@ -46,8 +46,6 @@ class Generator():
                 row = []
                 for x in range(size.width):
                     noise_value = noise_field[x][y]
-                    # TODO Look at porting the tile fetching and creation into the 
-                    # database and return the tile dataclass instead
                     tile = db.fetch_tile(TileQuery.SELECT_WITH_COLORS_BY_NOISE, (noise_value, noise_value))
                     chunk[x, y] = tile
         return chunk

@@ -19,12 +19,10 @@ class UIText():
         self._font_data = self._window.fonts.get_font()
     
     def update_position(self, x, y):
-        #print(x, y)
-        self._offset = Coords( self._position.x + x, self._position.y + y)
-        #print(self._offset)
+        self._offset = Coords(self._position.x + x, self._position.y + y)
     
     def update(self):
         pass
 
     def render(self):
-        pr.draw_text_ex(self._font_data['font'], self._text, [self._offset.x, self._offset.y], self._text_size, 2, self._window.colors['bg'])
+        pr.draw_text_ex(self._window.fonts['monocraft']['font'], self._text, [self._offset.x, self._offset.y], self._text_size, 2, self._window.colors['bg'])

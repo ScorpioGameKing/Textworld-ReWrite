@@ -21,7 +21,6 @@ class LayoutContainer():
         self._cols = cols
     
     def add_to_layout(self, name, obj):
-        #print(len(self._children))
         self._children.update({name:{
             'object':obj,
             'row': len(self._children) + 1,
@@ -30,7 +29,6 @@ class LayoutContainer():
     
     def reposition(self):
         for _child in self._children:
-            #print(f"Repositioning: {self._children[_child]['object']._position}")
             self._children[_child]['object'].update_position(
                 self._position.x + (self._children[_child]['col'] * self._margin), 
                 self._position.y + (self._children[_child]['row'] * self._margin))

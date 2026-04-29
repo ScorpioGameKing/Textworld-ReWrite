@@ -31,7 +31,6 @@ class TextworldWindow():
         self.fonts.load_fonts()
     
     def toggle_font(self):
-        print(self.fonts.font_name)
         if self.fonts.font_name == "monocraft":
             self.fonts.set_font("blocks")
         elif self.fonts.font_name == "blocks":
@@ -58,7 +57,6 @@ class TextworldWindow():
             self.fonts.set_font("monocraft")
     
     def toggle_theme(self):
-        print(self.colors.theme_name)
         match self.colors.theme_name:
             case "gruvbox-dark":
                 self.colors.set_theme("ocean-dark")

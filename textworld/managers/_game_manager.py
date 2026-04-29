@@ -8,13 +8,12 @@ class GameManager():
         self._game = game
     
     def update(self):
+        
         '''
         -----------------------------------------
         | Catch Keys
         -----------------------------------------
         '''
-        # Mouse Checks
-        self._game.game_view.get_zoom_dir(self._game.mouse_manager.scroll_dir)
 
         # Modifier Keys
         _hold_left_shift = self._game.keyboard_manager.get_held_key("LSH")
@@ -64,6 +63,9 @@ class GameManager():
                 | Un-Paused Keybinds
                 -----------------------------------------
                 '''
+                
+                # Mouse Checks
+                self._game.game_view.get_zoom_dir(self._game.mouse_manager.scroll_dir)
                 
                 # Pause Menu UI Toggle
                 if _pressed_p:

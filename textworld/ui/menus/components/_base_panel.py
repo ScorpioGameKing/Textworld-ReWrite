@@ -34,7 +34,6 @@ class BasePanel():
         self.border_color = colors["bg"]
 
     def update(self):
-        #print(f"Current: {self._current_position} Screen: {self._screen_position}")
         if not self.visible:
             match self.slide_dir:
                 case 'left':

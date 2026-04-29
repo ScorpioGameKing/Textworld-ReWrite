@@ -103,7 +103,7 @@ class GameManager():
 
                 '''
                 -----------------------------------------
-                | Un-Paused Keybinds
+                | Paused Keybinds
                 -----------------------------------------
                 '''
 
@@ -114,3 +114,11 @@ class GameManager():
                     self._game.menu_manager.get_active().components['pause-screen'].bottom_panel.toggle_slide()
                     self._game.menu_manager.get_active().components['pause-screen'].right_panel.toggle_slide()
                     self._paused = False
+                
+                if _press_w or _press_a:
+                    print(self._game.menu_manager.get_active().components['pause-screen'])
+                    self._game.menu_manager.get_active().components['pause-screen'].top_panel.hover_up()
+                
+                if _press_s or _press_d:
+                    print(self._game.menu_manager.get_active().components['pause-screen'])
+                    self._game.menu_manager.get_active().components['pause-screen'].top_panel.hover_down()

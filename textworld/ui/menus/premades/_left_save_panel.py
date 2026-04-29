@@ -1,9 +1,10 @@
-from textworld.ui.menus.components import BasePanel, LayoutContainer, UIText
+from textworld.ui.menus.components import BasePanel, UIText
 from textworld.models import Size, Coords
 
 class LeftSavePanel(BasePanel):
 
     _window: TextworldWindow
+    _header: UIText
     _name: UIText
     _hp: UIText
     _mp: UIText
@@ -12,16 +13,14 @@ class LeftSavePanel(BasePanel):
     def __init__(self, window, position, size, bg_color, fg_color, slide_dir=None, slide_speed=None):
         super().__init__(position, size, bg_color, fg_color, slide_dir, slide_speed)
         self._window = window
-        self._name = UIText(self._window, Coords(6, 5), 18, "Player Name:")
-        self._hp = UIText(self._window, Coords(6, 18), 18, "Cur./Max HP:")
-        self._mp = UIText(self._window, Coords(6, 31), 18, "Cur./Max HP:")
-        self._stamina = UIText(self._window, Coords(6, 43), 18, "Cur./Max SP:")
+        self._header = UIText(self._window, Coords(20, 5), 24, "~CHARACTER~")
+        self._name = UIText(self._window, Coords(6, 30), 18, "Name:")
+        self._hp = UIText(self._window, Coords(6, 43), 18, "HP:")
+        self._mp = UIText(self._window, Coords(6, 56), 18, "HP:")
+        self._stamina = UIText(self._window, Coords(6, 69), 18, "SP:")
         
     def update_items(self):
-        self._name.update_font()
-        self._hp.update_font()
-        self._mp.update_font()
-        self._stamina.update_font()
+        self._header.update_position(self._current_position.x, self._current_position.y)
         self._name.update_position(self._current_position.x, self._current_position.y)
         self._hp.update_position(self._current_position.x, self._current_position.y)
         self._mp.update_position(self._current_position.x, self._current_position.y)
@@ -30,6 +29,7 @@ class LeftSavePanel(BasePanel):
     def update(self):
         super().update()
         self.update_items()
+        self._header.update()
         self._name.update()
         self._hp.update()
         self._mp.update()
@@ -37,6 +37,7 @@ class LeftSavePanel(BasePanel):
     
     def render(self):
         super().render()
+        self._header.render()
         self._name.render()
         self._hp.render()
         self._mp.render()

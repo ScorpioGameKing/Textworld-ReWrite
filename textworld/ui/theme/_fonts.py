@@ -9,7 +9,7 @@ class Fonts():
     font_name: str = ""
     _default_font: str = "stencilie"
     _font_location: str = "textworld/ui/resources/fonts/"
-    _min_size: int =  14
+    _min_size: int =  12
     _max_size: int = 50
     _default_size: int = 20
     

@@ -24,11 +24,20 @@ class KeyboardManager():
         'Y'     : pr.KEY_Y            , 'Z'    : pr.KEY_Z              ,  '0'    : pr.KEY_ZERO           
     }
 
+    _mouse_map: dict = {
+        'LEFT'   : pr.MOUSE_LEFT_BUTTON,
+        'RIGHT'  : pr.MOUSE_RIGHT_BUTTON,
+        'MIDDLE' : pr.MOUSE_MIDDLE_BUTTON
+    }
+
     def get_pressed_key(self, key_char):
         return pr.is_key_pressed(self._key_map[key_char])
     
     def get_held_key(self, key_char):
         return pr.is_key_down(self._key_map[key_char])
+
+    def get_mouse_pressed(self, button):
+        return pr.is_mouse_button_pressed(self._mouse_map[button])
 
     def update(self):
         pass

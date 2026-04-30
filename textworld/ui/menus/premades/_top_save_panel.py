@@ -1,4 +1,8 @@
 from textworld.ui.menus.components import BasePanel, UIText, UIButton
+from textworld.ui.menus.premades._exit_button import UIExitButton
+from textworld.ui.menus.premades._save_button import UISaveButton
+from textworld.ui.menus.premades._load_button import UILoadButton
+from textworld.ui.menus.premades._options_button import UIOptionsButton
 from textworld.models import Coords, Size
 
 class TopSavePanel(BasePanel):
@@ -6,10 +10,10 @@ class TopSavePanel(BasePanel):
     _window: TextworldWindow
     _header: UIText
     _continue: UIButton
-    _save: UIButton
-    _load: UIButton
-    _options: UIButton
-    _exit: UIButton
+    _save: UISaveButton
+    _load: UILoadButton
+    _options: UIOptionsButton
+    _exit: UIExitButton
     _cursor: UIText
     _hovered: str = 'continue'
 
@@ -19,11 +23,24 @@ class TopSavePanel(BasePanel):
         self._header = UIText(self._window, Coords(300, 5), 32, "~PAUSE MENU~")
         self._cursor = UIText(self._window, Coords(320, 60), 22, "->")
         self._continue = UIButton(self._window, Coords(350, 60), Size(32, 110), "Continue")
-        self._save = UIButton(self._window, Coords(350, 100), Size(32, 110), "Save")
-        self._load = UIButton(self._window, Coords(350, 140), Size(32, 110), "Load")
-        self._options = UIButton(self._window, Coords(350, 180), Size(32, 110), "Options")
-        self._exit = UIButton(self._window, Coords(350, 220), Size(32, 110), "Exit")
+        self._save = UISaveButton(self._window, Coords(350, 100), Size(32, 110), "Save")
+        self._load = UILoadButton(self._window, Coords(350, 140), Size(32, 110), "Load")
+        self._options = UIOptionsButton(self._window, Coords(350, 180), Size(32, 110), "Options")
+        self._exit = UIExitButton(self._window, Coords(350, 220), Size(32, 110), "Exit")
     
+    def press_selected(self):
+        match self._hovered:
+            case 'continue':
+                    self._continue.button_press()
+            case 'save':
+                    self._save.button_press()
+            case 'load':
+                    self._load.button_press()
+            case 'options':
+                    self._options.button_press()
+            case 'exit':
+                    self._exit.button_press()
+
     def hover_down(self):
         match self._hovered:
             case 'continue':
@@ -81,6 +98,11 @@ class TopSavePanel(BasePanel):
         self._load.update()
         self._options.update()
         self._exit.update()
+        if self._continue._mouse_hover: self._hovered = 'continue'
+        if self._save._mouse_hover: self._hovered = 'save'
+        if self._load._mouse_hover: self._hovered = 'load'
+        if self._options._mouse_hover: self._hovered = 'options'
+        if self._exit._mouse_hover: self._hovered = 'exit'
     
     def render(self):
         super().render()

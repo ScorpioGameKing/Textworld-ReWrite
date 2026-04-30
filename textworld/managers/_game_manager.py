@@ -22,6 +22,9 @@ class GameManager():
         _pressed_f = self._game.keyboard_manager.get_pressed_key("F")
         _pressed_t = self._game.keyboard_manager.get_pressed_key("T")
         _pressed_p = self._game.keyboard_manager.get_pressed_key("P")
+        _press_e = self._game.keyboard_manager.get_pressed_key("E")
+        _press_enter = self._game.keyboard_manager.get_pressed_key("ENT")
+        _left_click = self._game.keyboard_manager.get_mouse_pressed("LEFT")
 
         # Pressing Key
         _press_w = self._game.keyboard_manager.get_pressed_key("W")
@@ -117,3 +120,7 @@ class GameManager():
                 
                 if _press_s or _press_d:
                     self._game.menu_manager.get_active().components['pause-screen'].top_panel.hover_down()
+
+                if _press_e or _press_enter or _left_click:
+                    self._game.menu_manager.get_active().components['pause-screen'].top_panel.press_selected()
+                

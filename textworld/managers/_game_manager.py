@@ -19,8 +19,8 @@ class GameManager():
         _hold_left_shift = self._game.keyboard_manager.get_held_key("LSH")
         
         # Key Presses
-        _pressed_f = self._game.keyboard_manager.get_pressed_key("F")
-        _pressed_t = self._game.keyboard_manager.get_pressed_key("T")
+        _pressed_equal = self._game.keyboard_manager.get_pressed_key("EQL")
+        _pressed_minus = self._game.keyboard_manager.get_pressed_key("-")
         _pressed_p = self._game.keyboard_manager.get_pressed_key("P")
         _press_e = self._game.keyboard_manager.get_pressed_key("E")
         _press_enter = self._game.keyboard_manager.get_pressed_key("ENT")
@@ -43,14 +43,23 @@ class GameManager():
         | Anytime Debug Keybinds
         -----------------------------------------
         '''
-        # Font Cycle
-        if _pressed_f:
-            self._game.window.toggle_font()
+        # Font Cycle Up
+        if not _hold_left_shift and _pressed_equal:
+            self._game.window.cycle_font_up()
             self._game.game_view.update_font()
 
-        # Theme Cycle
-        if _pressed_t:
-            self._game.window.toggle_theme()
+        # Font Cycle Down
+        if not _hold_left_shift and _pressed_minus:
+            self._game.window.cycle_font_down()
+            self._game.game_view.update_font()
+
+        # Theme Cycle Up
+        if _hold_left_shift and _pressed_equal:
+            self._game.window.cycle_theme_up()
+
+        # Theme Cycle Down
+        if _hold_left_shift and _pressed_minus:
+            self._game.window.cycle_theme_down()
         
         '''
         -----------------------------------------

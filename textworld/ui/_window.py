@@ -30,7 +30,7 @@ class TextworldWindow():
         pr.set_window_monitor(0)
         self.fonts.load_fonts()
     
-    def toggle_font(self):
+    def cycle_font_up(self):
         if self.fonts.font_name == "monocraft":
             self.fonts.set_font("blocks")
         elif self.fonts.font_name == "blocks":
@@ -55,8 +55,34 @@ class TextworldWindow():
             self.fonts.set_font("terminal-grotesque_open")
         elif self.fonts.font_name == "terminal-grotesque_open":
             self.fonts.set_font("monocraft")
+
+    def cycle_font_down(self):
+        if self.fonts.font_name == "monocraft":
+            self.fonts.set_font("terminal-grotesque_open")
+        elif self.fonts.font_name == "blocks":
+            self.fonts.set_font("monocraft")
+        elif self.fonts.font_name == "stencilie":
+            self.fonts.set_font("blocks")
+        elif self.fonts.font_name == "happykiller":
+            self.fonts.set_font("stencilie")
+        elif self.fonts.font_name == "blockface":
+            self.fonts.set_font("happykiller")
+        elif self.fonts.font_name == "blockface-bold":
+            self.fonts.set_font("blockface")
+        elif self.fonts.font_name == "origa":
+            self.fonts.set_font("blockface-bold")
+        elif self.fonts.font_name == "origap":
+            self.fonts.set_font("origa")
+        elif self.fonts.font_name == "uglyhandwriting":
+            self.fonts.set_font("origap")
+        elif self.fonts.font_name == "pecita":
+            self.fonts.set_font("uglyhandwriting")
+        elif self.fonts.font_name == "terminal-grotesque":
+            self.fonts.set_font("pecita")
+        elif self.fonts.font_name == "terminal-grotesque_open":
+            self.fonts.set_font("terminal-grotesque")
     
-    def toggle_theme(self):
+    def cycle_theme_up(self):
         match self.colors.theme_name:
             case "gruvbox-dark":
                 self.colors.set_theme("ocean-dark")
@@ -74,6 +100,25 @@ class TextworldWindow():
                 self.colors.set_theme("shic")
             case "shic":
                 self.colors.set_theme("gruvbox-dark")
+
+    def cycle_theme_down(self):
+        match self.colors.theme_name:
+            case "gruvbox-dark":
+                self.colors.set_theme("shic")
+            case "ocean-dark":
+                self.colors.set_theme("gruvbox-dark")
+            case "railcast-dark":
+                self.colors.set_theme("ocean-dark")
+            case "gruvbox-light":
+                self.colors.set_theme("railcast-dark")
+            case "ocean-light":
+                self.colors.set_theme("gruvbox-light")
+            case "railcast-light":
+                self.colors.set_theme("ocean-light")
+            case "swayr":
+                self.colors.set_theme("railcast-light")
+            case "shic":
+                self.colors.set_theme("swayr")
     
     def run(self):
         self._main_loop()

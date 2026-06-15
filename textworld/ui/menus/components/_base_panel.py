@@ -15,12 +15,21 @@ class BasePanel():
 
     def __init__(self, position, size, bg_color, border_color, slide_dir=None, slide_speed=None):
         self._screen_position = position
-        self._current_position = Coords(position.x, position.y)
+        #self._current_position = Coords(position.x, position.y)
         self._size = size
         self.bg_color = bg_color
         self.border_color = border_color
         if not slide_dir == None: self.slide_dir = slide_dir
         if not slide_speed == None: self.slide_speed = slide_speed
+        match self.slide_dir:
+            case 'left':
+                self._current_position = Coords(0 - self._size.width, position.y)
+            case 'right':
+                self._current_position = Coords(self._screen_position.x + self._size.width + (self._size.width * 0.5), position.y)
+            case 'up':
+                self._current_position = Coords(position.x, 0 - self._size.height)
+            case 'down':
+                self._current_position = Coords(position.x, self._screen_position.y + self._size.height + (self._size.height * 0.5))
     
     def toggle_slide(self):
         self.visible = not self.visible
